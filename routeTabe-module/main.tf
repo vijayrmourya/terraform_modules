@@ -16,5 +16,5 @@ resource "aws_route_table" "igw-internet-association" {
 resource "aws_route_table_association" "subnet_subnet_associations" {
   for_each = var.create_association_flag ? var.subnet_rt_association : {}
   subnet_id      = each.value.subnet_id
-  route_table_id = each.value["route_table_id"]
+  route_table_id = each.value.route_table_id
 }
