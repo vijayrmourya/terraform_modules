@@ -1,12 +1,12 @@
-resource "aws_instance" "ec2_instances-pub1" {
-  subnet_id              = aws_subnet.simpleInfra-subnet-pub1.id
-  ami                    = "ami-07ffb2f4d65357b42"
-  instance_type          = "t3.medium"
-  user_data              = file("${path.module}/testConfig.sh")
-  key_name               = aws_key_pair.ec2-key-pair.key_name
-  vpc_security_group_ids = [aws_security_group.testInstance-securityGroup.id]
+resource "aws_instance" "ec2_instance_module" {
+  for_each               = var.ec2Instance_Config
+  subnet_id              = each.value.subnet_id
+  ami                    = each.value.ami
+  instance_type          = each.value.instance_type
+  key_name               = each.value.key_name
+  vpc_security_group_ids = each.value.vpc_security_group_ids
   tags                   = {
-    Name   = "simpleInfra-instance"
+    Name   = each.value.instanceName
     Source = "Terraform"
   }
 }

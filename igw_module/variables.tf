@@ -1,10 +1,7 @@
-variable "igw-config" {
-  type = object({
-    Name = string
-    vpc-id = string
-  })
-  default = {
-    vpc-id = "provide-vpc-id"
-    Name   = "simpleInfra-igw"
-  }
+variable "igw_config" {
+  type = map(object({
+    Name   = string
+    vpc_id = string
+  }))
+  default = {}
 }

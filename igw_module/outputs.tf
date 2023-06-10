@@ -1,3 +1,3 @@
-output "igw-id" {
-  value = aws_internet_gateway.simpleInfra-igw.id
+output "igw_id" {
+  value = {for k, igw in aws_internet_gateway.igw_module : k => igw.id}
 }

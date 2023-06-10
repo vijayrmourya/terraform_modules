@@ -1,16 +1,10 @@
-variable "vpc-config" {
+variable "vpc_config" {
   type = map(object({
-    Name                 = string
-    cidr                 = string
-    instance_tenancy     = string
-    enable_dns_hostnames = bool
+    Name                                 = string
+    cidr_block                           = string
+    instance_tenancy                     = optional(string)
+    enable_network_address_usage_metrics = optional(bool)
+    enable_dns_hostnames                 = optional(bool)
   }))
-  default = {
-    vpc-1 = {
-      Name                 = "terraformDefaultName"
-      cidr                 = "10.10.0.0/20"
-      instance_tenancy     = "default"
-      enable_dns_hostnames = true
-    }
-  }
+  default = {}
 }
