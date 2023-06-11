@@ -1,3 +1,8 @@
+#Local Ignores
+*.lock.hcl
+.idea/
+.vscode/
+################################
 # Local .terraform directories
 **/.terraform/*
 
@@ -33,7 +38,3 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
-
-*.lock.hcl
-.idea/
-.vscode/
